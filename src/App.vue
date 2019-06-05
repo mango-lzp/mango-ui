@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <mg-singler name='123' v-model='nice'/>
+    <mg-input name='123' v-model='nice'/>
   </div>
 </template>
 
@@ -10,14 +10,8 @@ export default {
   name: 'app',
   data(){
     return{
-      nice:'123456'
     }
   },
-  watch:{
-    nice(){
-      console.log(this.nice)
-    }
-  }
 }
 </script>
 
