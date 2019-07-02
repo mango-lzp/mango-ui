@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <mg-input name='123' v-model='nice'/>
+    <mg-input std='789' name='123' v-model='nice'> <p>1010</p> </mg-input>
   </div>
 </template>
 
@@ -10,6 +10,7 @@ export default {
   name: 'app',
   data(){
     return{
+      nice:'123456'
     }
   },
 }

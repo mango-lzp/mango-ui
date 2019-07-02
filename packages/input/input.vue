@@ -1,23 +1,3 @@
-<template>
-  <div :class="['mg-input', {'is-disabled': disabled}]">
-    <template>
-      <span v-if='name || name === ""'>{{name}}：</span>
-      <input
-        ref="input"
-        class="mg-input-inner"
-        v-bind="$attrs"
-        @input='handleInput'
-        @change="handleChange"
-        @blur="handleBlur"
-        @focus="handleFocus"
-        :disabled='disabled'
-        type="text"
-      >
-      <slot></slot>
-    </template>
-  </div>
-</template>
-
 <script>
 export default {
   name:'mg-input',
@@ -25,6 +5,26 @@ export default {
     name: String,
     value: [String, Number],
     disabled: Boolean,
+  },
+  render(h){
+    let span
+    if(this.name || this.name === '') span = <span>{this.name}：</span>
+    return (
+      <div class='mg-input'>
+        {span}
+        <input
+          ref="input"
+          class="mg-input-inner"
+          {...this.attrs /*等价于v-bind='this.$attrs'*/}
+          on-input={this.handleInput}
+          on-change={this.handleChange}
+          on-blur={this.handleBlur}
+          on-focus={this.handleFocus}
+          type="text"
+        />
+        {this.$slots.default /*等价于<slot></slot>*/}
+      </div>
+    )
   },
   methods:{
     setInputValue() {
