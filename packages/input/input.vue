@@ -1,6 +1,7 @@
 <script>
 export default {
   name:'mg-input',
+  inheritAttrs: false,//取消默认属性继承
   props:{
     name: String,
     value: [String, Number],
@@ -15,7 +16,7 @@ export default {
         <input
           ref="input"
           class="mg-input-inner"
-          {...this.attrs /*等价于v-bind='this.$attrs'*/}
+          attrs ={this.$attrs}
           on-input={this.handleInput}
           on-change={this.handleChange}
           on-blur={this.handleBlur}
